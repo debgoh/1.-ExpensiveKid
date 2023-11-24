@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ExpensiveKid</title>
+        <link rel="stylesheet" type="text/css" href="/style.css"/>
+    </head>
+    <br>
+    <h1>How expensive is my kid?</h1>
+    <br>
+    <body>
+        <p> This is an expense calculator for parents to have a quick sense of how much their kid(s) are costing them every month.</p>
+       <br>
+        <hr/>
+
+    <!--Total Info-->
+        <div class="balance-container center-column">
+            <p class="balance-title">Your balance</p>
+            <p class="balance-amount" id="totalBalance">$<%= balance %></p>
+        </div>
+
+        <div class="total-info center-column">
+            <div class="amount-container income-color">
+              <p class="label">Income</p>
+              <p class="amount" id="incomeTotalAmount">$<%= totalIncomeAmount %></p>
+            </div>
+    
+            <div class="amount-container expense-color">
+              <p class="label">Expense</p>
+              <p class="amount" id="expenseTotalAmount">$<%= totalExpenseAmount %></p>
+            </div>
+        </div>
+        
+     <!--Add Transaction-->
+
+        <div class="add-transaction center-column" id="addNewTransactionForm">
+            <h2 class="title">What are you spending on?</h2>
+    
+            <form class="add-transaction center-column" id="addNewTransactionForm" action="/submit" method="POST">
+              
+              <label class="input-label" for="descriptiveText">
+                <span>Item</span>
+                <input
+                  type="text"
+                  class="form-input"
+                  name="descriptiveText"
+                  placeholder="Enter a descriptive text"
+                />
+              </label>
+      
+              <label class="input-label" for="amountText">
+                <span>Amount (negative - expense | positive - income)</span>
+                <input
+                  type="number"
+                  class="form-input"
+                  name="amountText"
+                  placeholder="Enter the amount"
+                />
+              </label>
+      
+              <button type="submit" class="send-btn" id="btnAddTransaction" value="Submit">
+                Submit
+              </button>
+            </form>
+            
+        </div>
+
+        <!-- Display transaction history -->
+        <div class="transaction-history center-column" id="historyListContainer"> 
+            <div class="receipt-box">
+        
+            <div class="list-item">Transaction History</div>
+            <% transactionHistory.forEach((transaction, index) => { %>
+            
+            <div class="transaction-item">
+                <p><%= transaction.descriptiveText %> - <%= transaction.amountText %></p>
+                <button onclick="deleteTransaction('<%= index %>')" class="delete-btn">Delete</button>
+            </div>
+        <% }); %>
+
+    </div>
+</div>
+
+<script>
+    function deleteTransaction(index) {
+        // Redirect to the route that deletes the specified transaction
+        window.location.href = `/deleteTransaction/${index}`;
+    }
+    
+    function clearHistory() {
+        // Redirect to the route that clears the history
+        window.location.href = "/clearHistory";
+    }
+</script>
+    </body>
+</html>
