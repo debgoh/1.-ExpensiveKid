@@ -31,13 +31,20 @@ p{
     max-width: 462px;
     margin: 0 auto;
   }
+
+  @media only screen and (max-width: 600px) {
+    body {
+      margin: 1em; /* Adjust margin for smaller screens */
+    }
+    /* Add similar styles for other elements as needed */
+  }
   
   /* === BALANCE SECTION === */
   .balance-container {
     margin-top: 2em;
     margin-bottom: 2em;
   }
-  
+
   .balance-container .balance-title {
     text-transform: uppercase;
     font-size: 0.7em;
