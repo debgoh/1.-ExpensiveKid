@@ -1,3 +1,9 @@
+@media only screen and (max-width: 600px) {
+  body {
+    margin: 1em;
+  }
+}
+
 h1{
     background-color: cadetblue;
     display: flex;
@@ -32,13 +38,6 @@ p{
     margin: 0 auto;
   }
 
-  @media only screen and (max-width: 600px) {
-    body {
-      margin: 1em; /* Adjust margin for smaller screens */
-    }
-    /* Add similar styles for other elements as needed */
-  }
-  
   /* === BALANCE SECTION === */
   .balance-container {
     margin-top: 2em;
